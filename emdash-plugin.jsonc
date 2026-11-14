@@ -1,0 +1,75 @@
+{
+	"$schema": "./node_modules/@emdash-cms/plugin-cli/schemas/emdash-plugin.schema.json",
+
+	"slug": "discord-share",
+	"publisher": "did:plc:myrtyr2rsjiivzlp5m6qevv5",
+
+	"license": "MIT",
+	"author": { "name": "Rie Tamura", "url": "https://bsky.app/profile/rietamura.com" },
+	"security": { "url": "https://github.com/RieTamura/EmDash-To-Discord/issues" },
+	"name": "EmDash To Discord",
+	"description": "Posts a card to a Discord channel once when an entry is first published, with its title, link and featured image. Connects only to Discord.",
+	"keywords": ["discord", "webhook", "social", "share", "notification"],
+	"repo": "https://github.com/RieTamura/EmDash-To-Discord",
+
+	"capabilities": [
+		// Read the entry and its public URL. The featured image is sent as a
+		// public URL that Discord fetches itself, so no media access is needed.
+		"content:read",
+		"network:request"
+	],
+	// Only Discord, so the webhook URL cannot be sent anywhere else.
+	"allowedHosts": ["discord.com"],
+	"storage": {
+		// One record per entry, keyed "<collection>:<translation group or id>".
+		"shares": { "indexes": ["status", "updatedAt"] }
+	},
+
+	"admin": {
+		"pages": [{ "path": "/shares", "label": "Discord Share", "icon": "share" }],
+		"settingsSchema": {
+			"webhookUrl": {
+				"label": "Webhook URL",
+				"description": "From the channel's settings: Integrations → Webhooks → New Webhook → Copy Webhook URL. Anyone with it can post to the channel. Leave empty to stop posting. / チャンネルの設定の「連携サービス → ウェブフック → 新しいウェブフック → ウェブフック URL をコピー」で取得します。知っている人はだれでもそのチャンネルに投稿できます。空にすると投稿しません。",
+				"type": "secret"
+			},
+			"collections": {
+				"label": "Collections / 投稿するコレクション",
+				"description": "Separate with commas. Don't add collections that import posts from elsewhere. / カンマで区切ります。ほかのサービスから取り込むコレクションは入れないでください。",
+				"type": "string",
+				"default": "posts"
+			},
+			"content": {
+				"label": "Text above the card / カードの上の文",
+				"description": "Empty: the card only. Mentions such as @everyone never notify anyone. You can use {title}, {url}, {excerpt}, {date} and {collection}. / 空ならカードだけです。@everyone などのメンションで通知はしません。{title}、{url}、{excerpt}、{date}、{collection} が使えます。",
+				"type": "string",
+				"multiline": true,
+				"default": ""
+			},
+			"embedTitle": {
+				"label": "Card title / カードのタイトル",
+				"description": "Up to 256 characters. Empty: {title}. / 256 文字まで。空なら {title} です。",
+				"type": "string",
+				"default": "{title}"
+			},
+			"embedDescription": {
+				"label": "Card description / カードの説明",
+				"description": "Up to 4096 characters. Empty: no description. / 4096 文字まで。空なら説明なしです。",
+				"type": "string",
+				"multiline": true,
+				"default": "{excerpt}"
+			},
+			"includeImage": {
+				"label": "Show the featured image / アイキャッチ画像を出す",
+				"type": "boolean",
+				"default": true
+			},
+			"timeZone": {
+				"label": "Time zone for {date} / {date} のタイムゾーン",
+				"description": "Example: Asia/Tokyo. Default: UTC. / 例：Asia/Tokyo。既定は UTC です。",
+				"type": "string",
+				"default": "UTC"
+			}
+		}
+	}
+}
