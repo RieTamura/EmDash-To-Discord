@@ -165,6 +165,15 @@ describe("content:afterPublish", () => {
 		expect(await h.inspect.storage.list("shares")).toHaveLength(0);
 	});
 
+	it("posts nothing when the collection list is empty", async () => {
+		const h = await setup();
+		await h.fixtures.plugin.setting("collections", "");
+		const entry = await draft(h);
+		await publish(h, entry.id);
+		expect(h.http.requests()).toHaveLength(0);
+		expect(await h.inspect.storage.list("shares")).toHaveLength(0);
+	});
+
 	it("records an unconfigured site as not sent, and sends nothing", async () => {
 		const h = await setup({ webhookUrl: null });
 		const entry = await draft(h);

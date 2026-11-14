@@ -73,12 +73,14 @@ In Discord, open the channel's **Edit Channel → Integrations → Webhooks → 
 
 **Anyone with this URL can post to the channel.** Don't share it or put it anywhere public. If it leaks, delete the webhook in Discord, make a new one, and put the new URL in the plugin's settings.
 
+To stop posting, empty the Collections setting or disable the plugin. Saving the Webhook URL field empty keeps the previous URL.
+
 ### 3. Configure the plugin
 
 | Setting | Meaning |
 | --- | --- |
-| Webhook URL | The URL from step 2. Leave empty to stop posting |
-| Collections | Separated by commas. Default: `posts` |
+| Webhook URL | The URL from step 2 |
+| Collections | Separated by commas. Default: `posts`. Empty means nothing is posted |
 | Text above the card | Default: empty (card only). Up to 2000 characters |
 | Card title | Default: `{title}`. Up to 256 characters. Empty means `{title}` |
 | Card description | Default: `{excerpt}`. Up to 4096 characters. Empty means no description |

@@ -30,12 +30,12 @@
 		"settingsSchema": {
 			"webhookUrl": {
 				"label": "Webhook URL",
-				"description": "From the channel's settings: Integrations → Webhooks → New Webhook → Copy Webhook URL. Anyone with it can post to the channel. Leave empty to stop posting. / チャンネルの設定の「連携サービス → ウェブフック → 新しいウェブフック → ウェブフック URL をコピー」で取得します。知っている人はだれでもそのチャンネルに投稿できます。空にすると投稿しません。",
+				"description": "From the channel's settings: Integrations → Webhooks → New Webhook → Copy Webhook URL. Anyone with it can post to the channel. / チャンネルの設定の「連携サービス → ウェブフック → 新しいウェブフック → ウェブフック URL をコピー」で取得します。知っている人はだれでもそのチャンネルに投稿できます。",
 				"type": "secret"
 			},
 			"collections": {
 				"label": "Collections / 投稿するコレクション",
-				"description": "Separate with commas. Don't add collections that import posts from elsewhere. / カンマで区切ります。ほかのサービスから取り込むコレクションは入れないでください。",
+				"description": "Separate with commas. Empty: nothing is posted. Don't add collections that import posts from elsewhere. / カンマで区切ります。空にすると投稿しません。ほかのサービスから取り込むコレクションは入れないでください。",
 				"type": "string",
 				"default": "posts"
 			},
