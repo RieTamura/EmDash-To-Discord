@@ -19,8 +19,10 @@ import {
  * sent, so a crash can leave a post unsent (shown in the admin, with a button
  * to send it) but can never send it twice by itself.
  *
- * A sandbox allows 10 subrequests per run, and every storage, settings, content
- * and kv call counts as well as every fetch. A publish makes at most 7:
+ * A sandbox allows 10 subrequests per run before EmDash 1.5 and 30 from 1.5
+ * (a custom sandbox runner can still set 10). Every storage, settings, content
+ * and kv call counts as well as every fetch. Stay within 10 so that every
+ * supported version works. A publish makes at most 7:
  * settings, kv, claim, public URL, webhook, webhook info (only when Discord
  * leaves out the server ID), record. A resend from the admin makes at most 8.
  * Count again before adding a call.

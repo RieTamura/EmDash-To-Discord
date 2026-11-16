@@ -1,6 +1,6 @@
 {
 	"name": "discord-share",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Posts a card to a Discord channel once when an entry is first published, with its title, link, excerpt and featured image.",
 	"private": true,
 	"type": "module",
@@ -38,9 +38,9 @@
 		"emdash": ">=1.3.0"
 	},
 	"devDependencies": {
-		"@emdash-cms/plugin-cli": "0.13.4",
+		"@emdash-cms/plugin-cli": "0.13.6",
 		"@emdash-cms/plugin-test": "^0.2.10",
-		"emdash": "^1.3.0",
+		"emdash": "^1.5.0",
 		"typescript": "^5.9.0",
 		"vitest": "^4.1.0"
 	}

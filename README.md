@@ -33,7 +33,7 @@ There are two ways to install it.
 
 Find **EmDash To Discord** under **Registry** in the admin and install it.
 
-A sandbox allows 10 requests per run. This plugin makes at most 7 per publish and at most 8 per resend from the admin.
+A sandbox allows 10 requests per run before EmDash 1.5 and 30 from 1.5. This plugin makes at most 7 per publish and at most 8 per resend from the admin, so it works with either limit.
 
 ### From GitHub
 
